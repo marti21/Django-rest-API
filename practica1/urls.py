@@ -15,7 +15,7 @@ router.register(r'comentarios', views.ComentarioViewSet)
 router.register(r'solicitudes', views.FriendrequestViewSet)
 
 urlpatterns = [
-    ##path('', include(router.urls)),
+    path('api', include(router.urls)),
     path('edit_profile', views.edit_profile, name = "edit_profile"),
     path('profile/<str:the_user>', views.profile, name = "profile"),
     path('post2/<int:the_post>', views.post2),

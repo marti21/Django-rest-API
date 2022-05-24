@@ -27,7 +27,6 @@ function buscarUsuario(nombreUsuario){
 
     $.ajax({
         url : '/posts/' + nombreUsuario,
-        //data : { id : 123 },
         type : 'GET',
         dataType : 'json',
     
@@ -35,7 +34,6 @@ function buscarUsuario(nombreUsuario){
             //console.log("Ha funcionado" + json[0]["title"])
             console.log(json.length)
             printarPosts(json);
-    
         },
     
         error : function(xhr, status) {

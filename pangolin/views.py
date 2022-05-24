@@ -168,7 +168,7 @@ def PostViewAuthor(request, the_user):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializedpost = PostSerializer(post,many=True ,context={'request':request})
+        serializedpost = PostSerializer(post, many=True , context={'request':request})
         return Response(data=serializedpost.data, status=status.HTTP_200_OK)
  
     if request.method == 'DELETE':
