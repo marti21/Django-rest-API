@@ -39,7 +39,7 @@ urlpatterns = [
     path('friendRequests/<str:to_user>', views.FriendrequestView_FN),
     path('postFriends', views.PostFriendsView_FN),
     path('add_post', views.add_postView),
-    path('registrar', views.Registrar),
+    ##('registrar', views.Registrar),
     path('View_no_friends/<str:the_user>', views.View_no_friends),
     path('add_comment', views.add_comentario),
     path('acceptRequestFriend/<int:requestID>', views.acceptRequestFriend),
