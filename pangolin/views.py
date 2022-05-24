@@ -12,6 +12,10 @@ from .forms import PostForm, SignUpForm, UserChangeForm2
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import login, logout
 
+
+def first(request):
+    return render(request, 'first.html')
+
 #Vistas de la aplicación
 def profile(request, the_user):
     if request.user.is_authenticated:

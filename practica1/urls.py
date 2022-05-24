@@ -15,8 +15,7 @@ router.register(r'comentarios', views.ComentarioViewSet)
 router.register(r'solicitudes', views.FriendrequestViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
-
+    ##path('', include(router.urls)),
     path('edit_profile', views.edit_profile, name = "edit_profile"),
     path('profile/<str:the_user>', views.profile, name = "profile"),
     path('post2/<int:the_post>', views.post2),
@@ -27,6 +26,7 @@ urlpatterns = [
     path('login/', views.login_user, name = "login"),
     path('edit_post/<int:the_post>', views.edit_post, name = "edit_post"),
     path('change_password', views.change_password, name = "change_password"),
+    path('', views.first, name = "first"),
 
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('admin/', admin.site.urls),
@@ -52,4 +52,4 @@ urlpatterns = [
 ]
 
 if settings.DEBUG:  
-        urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)  
+        urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
