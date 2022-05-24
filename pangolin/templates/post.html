@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{post.title}}</title>
+    <link href='{% static "css/post.css" %}' rel="stylesheet" type="text/css">
+</head>
+<body>
+    {% csrf_token %}
+    <script>
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        console.log(csrftoken);
+        const userLogged = "{{request.user.username}}";
+        const userLoggedId = "{{request.user.pk}}";
+        console.log(userLogged);
+    </script>
+
+    <header id="main-header">
+        <a id="logo-header" href="">
+            
+            <svg viewBox="0 0 960 300">
+                <symbol id="s-text">
+                    <text text-anchor="middle" x="50%" y="80%">Pangolin</text>
+                </symbol>
+            
+                <g class = "g-ants">
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                </g>
+            </svg>
+            
+        </a>
+
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a id="usernameLogged" href="{% url 'profile' the_user=request.user.username %}">{{request.user.username}}</a></li>
+                <li><a href="{% url 'add_friends' %}">Add Friends</a></li>
+                <li><a href="{% url 'add_post' %}">Add post</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    
+    <div class="divPost">
+        <h1 class="postTitle"></h1>
+        <h3><a class="autorPost"></a></h3>
+        <p class="scrollDiv"></p>
+            
+        <img class="imagenPost"></img>
+
+        <p id="created_id"></p>
+
+        <div id="aquiVanLosBotones"></div>
+
+        <h4 id="titleComentarios">Comments:</h4>
+        <p id="AquilosComentarios"></p>
+
+        <form action="{{ post.get_absolute_url3 }}">
+            <input class="comentarioPost" name="comentario" type="text" placeholder="Comment" aria-label="text">
+            <button class="postButton2" type="submit">Comment</button>
+        </form>
+            
+        
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src='{% static "js/post.js" %}'></script>
+</body>
+</html>

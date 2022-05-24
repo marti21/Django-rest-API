@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{pubUser.username}}</title>
+    <link href='{% static "css/profilePublic.css" %}' rel="stylesheet" type="text/css">
+</head>
+<body>
+
+    <header id="main-header">
+        <a id="logo-header" href="">
+            
+            <svg viewBox="0 0 960 300">
+                <symbol id="s-text">
+                    <text text-anchor="middle" x="50%" y="80%">Pangolin</text>
+                </symbol>
+            
+                <g class = "g-ants">
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                </g>
+            </svg>
+            
+        </a>
+
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a id="usernameLogged" href="{% url 'profile' the_user=request.user.username %}">{{request.user.username}}</a></li>
+                <li><a href="{% url 'add_friends' %}">Add Friends</a></li>
+                <li><a href="{% url 'add_post' %}">Add post</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    <div id="container">
+
+        <div class="clearfix"></div>
+
+        <section id="content">
+            <h1 class="title">Profile</h1>
+            <div class="divUser">
+                <img id="imageUser">
+
+                <h1></h1>
+                <p id="firstName">Name:</p> <p></p>
+                <p id="date">Date:</p>
+                <p id="email">Email:</p>
+                <p id="date_joined">Joined:</p>
+            </div>
+
+            <h2 id="titlePost"> Posts </h2>
+            <div id="aquiVanLosPosts"></div>
+
+        </section>
+
+
+        <div class="clearfix"></div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src='{% static "js/profile.js" %}'></script>
+
+</body>
+</html>

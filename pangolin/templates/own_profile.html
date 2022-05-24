@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{user.username}}</title>
+    <link href='{% static "css/own_profile2.css" %}' rel="stylesheet" type="text/css">
+</head>
+    <body>
+    {% csrf_token %}
+    <script>
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        console.log(csrftoken);
+        const userLogged = "{{request.user.username}}";
+        console.log(userLogged);
+    </script>
+
+        <header id="main-header">
+            <a id="logo-header" href="{% url 'home' %}">
+                
+                <svg viewBox="0 0 960 300">
+                    <symbol id="s-text">
+                        <text text-anchor="middle" x="50%" y="80%">Pangolin</text>
+                    </symbol>
+                
+                    <g class = "g-ants">
+                        <use xlink:href="#s-text" class="text-copy"></use>
+                        <use xlink:href="#s-text" class="text-copy"></use>
+                        <use xlink:href="#s-text" class="text-copy"></use>
+                        <use xlink:href="#s-text" class="text-copy"></use>
+                        <use xlink:href="#s-text" class="text-copy"></use>
+                    </g>
+                </svg>
+                
+            </a>
+    
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a id="usernameLogged" href="{% url 'profile' the_user=request.user.username %}">{{request.user.username}}</a></li>
+                    <li><a href="{% url 'add_friends' %}">Add Friends</a></li>
+                    <li><a href="{% url 'add_post' %}">Add post</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+            </nav>
+    
+        </header>
+
+    <div id="container">
+
+        <div class="clearfix"></div>
+        
+        <section id="content">
+            <h1 class="title">Own Profile</h1>
+            <div class="divUser">
+                <img id="imageUser">
+
+                <h1></h1>
+                <p id="firstName">Name:</p> <p></p>
+                <p id="date">Date:</p>
+                <p id="email">Email:</p>
+                <p id="date_joined">Joined:</p>
+            </div>        
+                                    
+            <ul>
+                <li><a href="{% url 'change_password' %}">Change Password</a></li>
+                <li><a href="{% url 'edit_profile' %}">Edit Profile</a></li>
+            </ul>
+            
+            <h2 id="titlePost"> Posts </h2>
+
+            <div id="aquiVanLosPosts"></div>
+
+        </section>
+            
+        <aside>
+            <article class="asideArticle">
+                <h1>Notifications</h1>
+
+                <div id="aquiVanlosRequestFriends">
+                   
+
+                </div>
+
+            </article>
+
+            <article class="asideArticle">
+                <h1>Friends</h1>
+                <div id="AquiVanLosAmigos">
+
+                </div>
+              
+            </article>
+        </aside>
+
+        <div class="clearfix"></div>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src='{% static "js/privateProfile.js" %}'></script>
+
+
+    </body>
+</html>
