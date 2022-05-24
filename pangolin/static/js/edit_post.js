@@ -8,7 +8,7 @@ let buttonSave = buttonList.item(0);
 
 function cargarPost(id){
     $.ajax({
-        url : 'http://127.0.0.1:8000/post/' + id,
+        url : '/post/' + id,
         type : 'GET',
         dataType : 'json',
     
@@ -18,7 +18,7 @@ function cargarPost(id){
         },
     
         error : function(xhr, status) {
-            alert('Disculpe, existió un problema');
+            //alert('Disculpe, existió un problema');
         },
     
         // código a ejecutar sin importar si la petición falló o no
@@ -54,7 +54,7 @@ buttonSave.addEventListener("click", function(){
 
     $.ajax({
         type: "PUT",
-        url: "http://127.0.0.1:8000/post/" + id,
+        url: "/post/" + id,
         data: JSON.stringify(data),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -68,7 +68,7 @@ buttonSave.addEventListener("click", function(){
         },
     
         error : function(xhr, status) {
-            alert('Disculpe, existió un problema');
+            //alert('Disculpe, existió un problema');
         },
     
         // código a ejecutar sin importar si la petición falló o no

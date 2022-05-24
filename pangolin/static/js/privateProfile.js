@@ -1,7 +1,7 @@
 function buscarUsuario(nombreUsuario){
 
     $.ajax({
-        url : 'http://127.0.0.1:8000/user/' + nombreUsuario,
+        url : '/user/' + nombreUsuario,
         type : 'GET',
         dataType : 'json',
     
@@ -12,7 +12,7 @@ function buscarUsuario(nombreUsuario){
         },
     
         error : function(xhr, status) {
-            alert('Disculpe, existió un problema');
+            //alert('Disculpe, existió un problema');
         },
     
         // código a ejecutar sin importar si la petición falló o no
@@ -22,7 +22,7 @@ function buscarUsuario(nombreUsuario){
     });
 
     $.ajax({
-        url : 'http://127.0.0.1:8000/posts/' + nombreUsuario,
+        url : '/posts/' + nombreUsuario,
         //data : { id : 123 },
         type : 'GET',
         dataType : 'json',
@@ -35,7 +35,7 @@ function buscarUsuario(nombreUsuario){
         },
     
         error : function(xhr, status) {
-            alert('Disculpe, existió un problema');
+            //alert('Disculpe, existió un problema');
         },
     
         // código a ejecutar sin importar si la petición falló o no
@@ -47,7 +47,7 @@ function buscarUsuario(nombreUsuario){
 
 function buscarFriendRequests(nombreUsuario){
     $.ajax({
-        url : 'http://127.0.0.1:8000/friendRequests/' + nombreUsuario,
+        url : '/friendRequests/' + nombreUsuario,
         type : 'GET',
         dataType : 'json',
     
@@ -58,7 +58,7 @@ function buscarFriendRequests(nombreUsuario){
         },
     
         error : function(xhr, status) {
-            alert('Disculpe, existió un problema');
+            //alert('Disculpe, existió un problema');
         },
     
         // código a ejecutar sin importar si la petición falló o no
@@ -68,7 +68,7 @@ function buscarFriendRequests(nombreUsuario){
     });
 
     $.ajax({
-        url : 'http://127.0.0.1:8000/see_friends',
+        url : '/see_friends',
         type : 'GET',
         dataType : 'json',
     
@@ -79,7 +79,7 @@ function buscarFriendRequests(nombreUsuario){
         },
     
         error : function(xhr, status) {
-            alert('Disculpe, existió un problema');
+            //alert('Disculpe, existió un problema');
         },
     
         // código a ejecutar sin importar si la petición falló o no
@@ -122,7 +122,7 @@ function printarPosts(resultado){
         var nuevoArticle = document.createElement("article");
         nuevoArticle.className = "article";
         var nuevoA = document.createElement("a");
-        nuevoA.href = "http://127.0.0.1:8000/post2/" + resultado[i]["pk"];
+        nuevoA.href = "/post2/" + resultado[i]["pk"];
         
         var nuevoH2 = document.createElement("h2");
         nuevoH2.className = "articlePostTitle";
@@ -151,7 +151,7 @@ function printarPosts(resultado){
 
 function crearUserFriendRequest(idUser, idSolicitud){
     $.ajax({
-        url : 'http://127.0.0.1:8000/userId/' + idUser,
+        url : '/userId/' + idUser,
         type : 'GET',
         dataType : 'json',
     
@@ -161,7 +161,7 @@ function crearUserFriendRequest(idUser, idSolicitud){
         },
     
         error : function(xhr, status) {
-            alert('Disculpe, existió un problema');
+            //alert('Disculpe, existió un problema');
         },
     
         // código a ejecutar sin importar si la petición falló o no
@@ -209,19 +209,18 @@ function printarUserFriendRequests(resultado, id){
     buttonP1A.innerText = "Accept friend request";
     buttonP1A.addEventListener("click", function() {
         $.ajax({
-            url : 'http://127.0.0.1:8000/acceptRequestFriend/' + id,
+            url : '/acceptRequestFriend/' + id,
             type : 'DELETE',
             dataType : 'json',
 
             beforeSend: function(xhr, settings) {
                 xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                
             },
         
             // código a ejecutar sin importar si la petición falló o no
             complete : function(xhr, status) {
                 alert('SOLICITUD ACEPTADA');
-                document.location.href = "http://127.0.0.1:8000/profile/" + userLogged
+                document.location.href = "/profile/" + userLogged
             }
         });
     });
@@ -234,19 +233,18 @@ function printarUserFriendRequests(resultado, id){
     buttonP2A.innerText = "Reject friend request";
     buttonP2A.addEventListener("click", function() {
         $.ajax({
-            url : 'http://127.0.0.1:8000/rejectRequestFriend/' + id,
+            url : '/rejectRequestFriend/' + id,
             type : 'DELETE',
             dataType : 'json',
 
             beforeSend: function(xhr, settings) {
                 xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                
             },
         
             // código a ejecutar sin importar si la petición falló o no
             complete : function(xhr, status) {
                 alert('SOLICITUD DENEGADA');
-                document.location.href = "http://127.0.0.1:8000/profile/" + userLogged
+                document.location.href = "/profile/" + userLogged
             }
         });
     });
@@ -279,7 +277,7 @@ function printarAmigos(resultado){
         buttonP2A.innerText = "Delete friend";
         buttonP2A.addEventListener("click", function() {
             $.ajax({
-                url : 'http://127.0.0.1:8000/delete_friend/' + resultado[i]['username'],
+                url : '/delete_friend/' + resultado[i]['username'],
                 type : 'DELETE',
                 dataType : 'json',
 
@@ -290,7 +288,7 @@ function printarAmigos(resultado){
                 // código a ejecutar sin importar si la petición falló o no
                 complete : function(xhr, status) {
                     alert('Amigo eliminado');
-                    document.location.href = "http://127.0.0.1:8000/profile/" + userLogged
+                    document.location.href = "/profile/" + userLogged
                 }
             });
         });

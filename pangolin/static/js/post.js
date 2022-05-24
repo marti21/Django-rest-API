@@ -12,7 +12,7 @@ let buttonComentar = buttonLista.item(0)
 
 function buscarPost(id){
     $.ajax({
-        url : 'http://127.0.0.1:8000/post' + id,
+        url : '/post' + id,
         //data : { id : 123 },
         type : 'GET',
         dataType : 'json',
@@ -24,7 +24,7 @@ function buscarPost(id){
         },
     
         error : function(xhr, status) {
-            alert('Disculpe, existió un problema');
+            //alert('Disculpe, existió un problema');
         },
     
         // código a ejecutar sin importar si la petición falló o no
@@ -34,7 +34,7 @@ function buscarPost(id){
     });
     
     $.ajax({
-        url : 'http://127.0.0.1:8000/comentarios' + id2,
+        url : '/comentarios' + id2,
         //data : { id : 123 },
         type : 'GET',
         dataType : 'json',
@@ -45,7 +45,7 @@ function buscarPost(id){
         },
     
         error : function(xhr, status) {
-            alert('Disculpe, existió un problema');
+            //alert('Disculpe, existió un problema');
         },
     
         // código a ejecutar sin importar si la petición falló o no
@@ -111,7 +111,7 @@ function printarComentarios(resultado){
 
 function buscarAuthor(id, item, bool){
     $.ajax({
-        url : 'http://127.0.0.1:8000/userId/' + id,
+        url : '/userId/' + id,
         type : 'GET',
         dataType : 'json',
     
@@ -121,7 +121,7 @@ function buscarAuthor(id, item, bool){
         },
     
         error : function(xhr, status) {
-            alert('Disculpe, existió un problema');
+            //alert('Disculpe, existió un problema');
         },
     
         // código a ejecutar sin importar si la petición falló o no
@@ -133,7 +133,7 @@ function buscarAuthor(id, item, bool){
 }
 function buscarAuthorPost(id, item){
     $.ajax({
-        url : 'http://127.0.0.1:8000/userId/' + id,
+        url : '/userId/' + id,
         type : 'GET',
         dataType : 'json',
     
@@ -144,7 +144,7 @@ function buscarAuthorPost(id, item){
         },
     
         error : function(xhr, status) {
-            alert('Disculpe, existió un problema');
+            //alert('Disculpe, existió un problema');
         },
     
         // código a ejecutar sin importar si la petición falló o no
@@ -173,7 +173,7 @@ function printarBotones(username, bool){
         divButton.appendChild(button2);
 
         button1.addEventListener("click", function() {
-            document.location.href = "http://127.0.0.1:8000/edit_post" + id
+            document.location.href = "/edit_post" + id
         });
         button2.addEventListener("click", function() {
             borrarPost(id);
@@ -184,7 +184,7 @@ function printarBotones(username, bool){
 
 function borrarPost(id){
     $.ajax({
-        url : 'http://127.0.0.1:8000/post' + id,
+        url : '/post' + id,
         type : 'DELETE',
         dataType : 'json',
 
@@ -216,7 +216,7 @@ buttonComentar.addEventListener("click", function() {
 
     $.ajax({
         type: "POST",
-        url: "http://127.0.0.1:8000/add_comment",
+        url: "/add_comment",
         data: JSON.stringify(data),
         contentType: "application/json; charset=utf-8",
         dataType: "json",

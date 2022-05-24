@@ -3,7 +3,7 @@ function mostrarUsers(){
     console.log("username " + nombreUsuario)
 
     $.ajax({
-        url : 'http://127.0.0.1:8000/View_no_friends/' + nombreUsuario,
+        url : '/View_no_friends/' + nombreUsuario,
         //data : { id : 123 },
         type : 'GET',
         dataType : 'json',
@@ -16,7 +16,7 @@ function mostrarUsers(){
         },
     
         error : function(xhr, status) {
-            alert('Disculpe, existió un problema');
+            //alert('Disculpe, existió un problema');
         },
     
         // código a ejecutar sin importar si la petición falló o no
@@ -53,7 +53,7 @@ function printarUsers(resultado){
 
         btnSendFriendReq.addEventListener("click", function() {
             $.ajax({
-                url : 'http://127.0.0.1:8000/sendRequestFriend/' + resultado[i]['username'],
+                url : '/sendRequestFriend/' + resultado[i]['username'],
                 type : 'POST',
                 dataType : 'json',
     

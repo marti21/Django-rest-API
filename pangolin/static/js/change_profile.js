@@ -17,7 +17,7 @@ buttonSave.addEventListener("click", function() {
 
     $.ajax({
         type: "PUT",
-        url: "http://127.0.0.1:8000/user/" + userLogged,
+        url: "/user/" + userLogged,
         data: JSON.stringify(data),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -31,7 +31,7 @@ buttonSave.addEventListener("click", function() {
         },
     
         error : function(xhr, status) {
-            alert('Disculpe, existió un problema');
+            //alert('Disculpe, existió un problema');
         },
     
         // código a ejecutar sin importar si la petición falló o no

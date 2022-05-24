@@ -18,7 +18,7 @@ buttonPost.addEventListener("click", function() {
 
     $.ajax({
         type: "POST",
-        url: "http://127.0.0.1:8000/add_post",
+        url: "/add_post",
         data: JSON.stringify(data),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -32,7 +32,7 @@ buttonPost.addEventListener("click", function() {
     
         error : function(xhr, status) {
             console.log("error: "  + xhr + status);
-            alert('Disculpe, existió un problema');
+            //alert('Disculpe, existió un problema');
         },
     
         // código a ejecutar sin importar si la petición falló o no

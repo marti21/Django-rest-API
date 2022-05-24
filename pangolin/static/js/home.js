@@ -1,7 +1,7 @@
 function buscarUsuario(){
 
     $.ajax({
-        url : 'http://127.0.0.1:8000/postFriends',
+        url : '/postFriends',
         type : 'GET',
         dataType : 'json',
     
@@ -11,7 +11,7 @@ function buscarUsuario(){
         },
     
         error : function(xhr, status) {
-            alert('Disculpe, existió un problema al buscar post de amigos');
+            //alert('Disculpe, existió un problema al buscar post de amigos');
         },
     
         // código a ejecutar sin importar si la petición falló o no
@@ -33,7 +33,7 @@ function crearPosts(resultado){
         var pPost = document.createElement("div");
   
         var nuevoA = document.createElement("a");
-        nuevoA.href = "http://127.0.0.1:8000/post2/" + resultado[i]["pk"];
+        nuevoA.href = "/post2/" + resultado[i]["pk"];
         
         var nuevoH2 = document.createElement("h2");
         nuevoH2.className = "articlePostTitle";
@@ -74,7 +74,7 @@ function crearPosts(resultado){
 
 function buscarAuthor(id, item){
     $.ajax({
-        url : 'http://127.0.0.1:8000/userId/' + id,
+        url : '/userId/' + id,
         //data : { id : 123 },
         type : 'GET',
         dataType : 'json',
@@ -85,7 +85,7 @@ function buscarAuthor(id, item){
         },
     
         error : function(xhr, status) {
-            alert('Disculpe, existió un problema al buscar el autor');
+            //alert('Disculpe, existió un problema al buscar el autor');
         },
     
         // código a ejecutar sin importar si la petición falló o no

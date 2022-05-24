@@ -5,7 +5,7 @@ console.log("username: " + nombreUsuario);
 function buscarUsuario(nombreUsuario){
 
     $.ajax({
-        url : 'http://127.0.0.1:8000/user/' + nombreUsuario,
+        url : '/user/' + nombreUsuario,
         type : 'GET',
         dataType : 'json',
     
@@ -16,7 +16,7 @@ function buscarUsuario(nombreUsuario){
         },
     
         error : function(xhr, status) {
-            alert('Disculpe, existió un problema');
+            //alert('Disculpe, existió un problema');
         },
     
         // código a ejecutar sin importar si la petición falló o no
@@ -26,7 +26,7 @@ function buscarUsuario(nombreUsuario){
     });
 
     $.ajax({
-        url : 'http://127.0.0.1:8000/posts/' + nombreUsuario,
+        url : '/posts/' + nombreUsuario,
         //data : { id : 123 },
         type : 'GET',
         dataType : 'json',
@@ -39,7 +39,7 @@ function buscarUsuario(nombreUsuario){
         },
     
         error : function(xhr, status) {
-            alert('Disculpe, existió un problema');
+            //alert('Disculpe, existió un problema');
         },
     
         // código a ejecutar sin importar si la petición falló o no
@@ -80,7 +80,7 @@ function printarPosts(resultado){
         var nuevoArticle = document.createElement("article");
         nuevoArticle.className = "article";
         var nuevoA = document.createElement("a");
-        nuevoA.href = "http://127.0.0.1:8000/post2/" + resultado[i]["pk"];
+        nuevoA.href = "/post2/" + resultado[i]["pk"];
         
         var nuevoH2 = document.createElement("h2");
         nuevoH2.className = "articlePostTitle";
