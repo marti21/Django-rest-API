@@ -195,7 +195,7 @@ function borrarPost(id){
         // código a ejecutar sin importar si la petición falló o no
         complete : function(xhr, status) {
             alert('Post Borrado correctamente');
-            document.location.href = "http://127.0.0.1:8000/home"
+            document.location.href = "/home"
         }
     });
 }

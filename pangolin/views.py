@@ -302,22 +302,24 @@ def UserViewId_FN(request, the_user):
 
 @api_view(['POST'])
 def add_postView(request):
-    serializer = PostSerializer(data = request.data)
-    if serializer.is_valid():
-        post = serializer.save()
-        serializedPost = PostSerializer(post, context={'request':request})
-        return Response(data = serializedPost.data, status=status.HTTP_201_CREATED) 
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    if request.method == 'POST':
+        serializer = PostSerializer(data = request.data)
+        if serializer.is_valid():
+            post = serializer.save()
+            serializedPost = PostSerializer(post, context={'request':request})
+            return Response(data = serializedPost.data, status=status.HTTP_201_CREATED) 
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['POST'])
 def Registrar(request):
-    serializer = UserSerializer(data=request.data)
-    if serializer.is_valid():
-        user = serializer.save()
-        serializedUser = UserSerializer(user, context={'request':request})
-        return Response(data = serializedUser.data, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    if request.method == 'POST':
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.save()
+            serializedUser = UserSerializer(user, context={'request':request})
+            return Response(data = serializedUser.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
 def View_no_friends(request, the_user):
